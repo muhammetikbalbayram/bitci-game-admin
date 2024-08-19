@@ -1,0 +1,31 @@
+@import url('./init.scss');
+
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px! important;
+  body {
+    background-color: var(--p-gray-50);
+    * {
+      box-sizing: border-box! important;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    &-track {
+      background: var(--p-zinc-900);
+    }
+    &-thumb {
+      background: var(--p-zinc-800);
+    }
+  }
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.shadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
