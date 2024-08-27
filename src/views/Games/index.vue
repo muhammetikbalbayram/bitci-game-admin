@@ -1,8 +1,5 @@
 <template>
   <div>
-    {{ $t('global.games') }}
-  </div>
-  <div>
     <div class="card-container">
       <div class="card">
         <div class="card-info">

@@ -1,8 +1,5 @@
 <template>
   <div>
-    {{ $t('global.dashboard') }}
-  </div>
-  <div>
     <div class="card-container">
       <div class="card" v-for="card in cards" :key="card.id">
         <div class="card-icon">
