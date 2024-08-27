@@ -26,6 +26,7 @@ export default {
 <style lang="scss" scoped>
 .global-layout {
   display: flex;
+  height: 100vh;
   @media screen and (max-width: 992px) {
     .sidebar {
       display: none;
@@ -43,7 +44,9 @@ export default {
     display: flex;
     flex-direction: column;
     main {
+      flex: 1;
       padding: 1rem;
+      overflow-y: auto;
     }
   }
 }  
