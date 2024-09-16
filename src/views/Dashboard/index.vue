@@ -19,10 +19,7 @@
     </div>
   </div>
   <div class="chart-container">
-    <div class="chart-card">
-      <h3 class="chart-title">Players</h3>
-      <apexchart type="pie" :options="pieOptions" :series="pieSeries"></apexchart>
-    </div>
+    <pie-chart :title="'Players'" :options="pieOptions" :series="pieSeries"/>
     <div class="chart-card">
       <h3 class="chart-title">Playing Hours(Daily)</h3>
       <apexchart type="bar" :options="barOptions" :series="barSeries"></apexchart>
@@ -41,9 +38,12 @@
 </template>
 
 <script>
+import PieChart from "../../components/Charts/PieChart.vue"
 export default {
   name: 'Dashboard',
-  title: ({ $t }) => $t('global.dashboard'),
+  components: {
+    PieChart
+  },  
   data() {
     return {
       cards: [
@@ -57,6 +57,9 @@ export default {
       pieOptions: {
         labels: ['Male', 'Female', 'Others'],
         colors: ['#007bff', '#28a745', '#ffc107'],
+        chart: {
+          height: 350
+        }
       },
       barSeries: [
         {
@@ -68,8 +71,16 @@ export default {
         chart: {
           height: 350,
           type: 'bar',
+          toolbar: {
+            show:false
+          }
         },
         plotOptions: {
+          chart: {
+            toolbar: {
+              show:false
+          }
+          },
           bar: {
             horizontal: false,
             columnWidth: '55%',
@@ -93,6 +104,9 @@ export default {
         chart: {
           type: 'area',
           height: 350,
+          toolbar: {
+            show:false
+          }
         },
         dataLabels: {
           enabled: false,
@@ -117,6 +131,9 @@ export default {
         chart: {
           height: 350,
           type: 'line',
+          toolbar: {
+            show:false
+          }
         },
         stroke: {
           width: [0, 4],
@@ -231,7 +248,7 @@ export default {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 48%;
-  height: 500px;
+  height: 400px;
 }
 
 .chart-title {

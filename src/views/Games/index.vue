@@ -13,6 +13,7 @@
       <div class="card">
         <div class="card-info">
           <p class="card-title">Daily Income</p>
+          <p class="card-count">${{ dailyIncomeTotal }}</p>
         </div>
         <div class="card-chart">
           <apexchart :height="dailyIncomeOptions.chartHeight" :width="dailyIncomeOptions.chartWidth" type="bar" :options="dailyIncomeOptions" :series="dailyIncomeSeries"></apexchart>
@@ -73,8 +74,6 @@ export default {
   data() {
     return {
       totalIncome: 120000,
-
-      // Donut Chart Data
       donutSeries: [40, 30, 20, 10],
       donutOptions: {
         labels: ['Game A', 'Game B', 'Game C', 'Game D'],
@@ -105,6 +104,9 @@ export default {
         chart: {
           height: 200,
           type: 'bar',
+          toolbar: {
+            show: false
+          }
         },
         plotOptions: {
           bar: {
@@ -138,6 +140,9 @@ export default {
         chart: {
           height: 200,
           type: 'line',
+          toolbar: {
+            show:false
+          }
         },
         dataLabels: {
           enabled: false,
@@ -164,6 +169,9 @@ export default {
         chart: {
           height: 350,
           type: 'area',
+          toolbar: {
+            show: false
+          }
         },
         dataLabels: {
           enabled: false,
@@ -189,6 +197,9 @@ export default {
         chart: {
           height: 350,
           type: 'area',
+          toolbar: {
+            show: false
+          }
         },
         dataLabels: {
           enabled: false,
@@ -219,6 +230,15 @@ export default {
       ],
     };
   },
+  computed: {
+    dailyIncomeTotal() {
+      let sum = 0;
+      for (let i = 0; i < this.dailyIncomeSeries[0].data.length; i++) {
+        sum += this.dailyIncomeSeries[0].data[i];
+      }
+      return sum;
+    }
+  }
 };
 </script>
 
@@ -250,7 +270,7 @@ export default {
 .card-title {
   font-size: 1.2rem;
   color: #666666;
-  margin: 0;
+  margin-bottom: 30px;
 }
 
 .card-count {
@@ -281,7 +301,7 @@ export default {
 }
 .monthly-income-card .card-info {
   width: 100%;
-  height: 350px;
+  height: 320px;
 }
 .datatable-container {
   margin-top: 30px;
